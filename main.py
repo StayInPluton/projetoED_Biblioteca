@@ -47,8 +47,36 @@ class Biblioteca:
         else:
             print("Erro: Livro não encontrado.")
 
+    def obter_titulo_livro(self, id_livro):
+        """Busca e retorna o título de um livro pelo ID."""
+        # Assume que você já tem este método para buscar o objeto livro
+        livro = self.livros.buscar(id_livro) 
+        if livro:
+            return livro.titulo
+        return "Livro Desconhecido" # Caso o livro não exista
+
     def exibir_historico(self):
-        self.historico.exibir_historico()
+        dados_historico = self.historico.exibir_historico()
+        
+        if not dados_historico:
+            print("Histórico de empréstimos está vazio.")
+            return
+
+        print("\n====================================")
+        print("     HISTÓRICO DE EMPRÉSTIMOS")
+        print("====================================")
+        
+        pos = 1
+        for registro in dados_historico:
+            titulo = self.obter_titulo_livro(registro['id_livro'])
+            
+            print(
+                f"{pos}. Título: {titulo} | "
+                f"Nome do Usuário: {registro['id_usuario']} | "
+                f"Data: {registro['data_emprestimo']}"
+            )
+            pos += 1
+        print("------------------------------------")
 
 
 def menu():
@@ -56,7 +84,7 @@ def menu():
 
     limpar_terminal()
     while True:
-        sleep(2)
+        sleep(2.5)
         limpar_terminal()
         print("\n====================================")
         print("           MENU PRINCIPAL           ")
@@ -110,15 +138,14 @@ def menu():
                 
             elif escolha == '5':
                 limpar_terminal()
-                print("\n====================================")
-                print("           HISTÓRICO DE EMPRÉSTIMOS    ")
-                print("====================================")
                 biblioteca.exibir_historico()
                 sleep(5)
                 
             elif escolha == '6':
                 limpar_terminal()
-                print("Saindo do sistema. Obrigado!")
+                print("\n====================================")
+                print("      Saindo do sistema. Obrigado!    ")
+                print("====================================")
                 sleep(2)
                 limpar_terminal()
                 break

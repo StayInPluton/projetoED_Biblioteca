@@ -6,8 +6,7 @@ class NoHistorico:
         self.data_emprestimo = data_emprestimo
         self.proximo = None  # Aponta para o próximo nó na lista
 
-    def __str__(self):
-        return f"Livro ID: {self.id_livro} | Usuário ID: {self.id_usuario} | Data: {self.data_emprestimo}"
+
 
 class HistoricoEmprestimos:
     """Gerencia a Lista Encadeada do histórico de empréstimos."""
@@ -26,14 +25,17 @@ class HistoricoEmprestimos:
         print("Registro de empréstimo adicionado ao histórico.")
         
     def exibir_historico(self):
-        """Percorre a lista e exibe todos os registros."""
-        if not self.head:
-            print("Histórico de empréstimos está vazio.")
-            return
 
-        print("\n--- Histórico de Empréstimos ---")
-        atual = self.head  # Começa pelo primeiro nó
+        if not self.head:
+            return [] # Retorna uma lista vazia se não houver registros
+
+        registros = []
+        atual = self.head 
         while atual:
-            print(atual)
-            atual = atual.proximo  # Move para o próximo nó
-        print("-------------------------------")
+            registros.append({
+                'id_livro': atual.id_livro,
+                'id_usuario': atual.id_usuario,
+                'data_emprestimo': atual.data_emprestimo
+            })
+            atual = atual.proximo
+        return registros # Retorna os dados puros
