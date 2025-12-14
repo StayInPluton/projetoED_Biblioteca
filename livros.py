@@ -1,3 +1,4 @@
+from time import sleep
 class Livro:
     def __init__(self, id, titulo, autor):
         self.id = id
@@ -18,9 +19,11 @@ class GerenciadorLivros:
     def cadastrar(self, id, titulo, autor):
         if id in self.livros:
             print("livro já cadastrado.")
+            sleep(2)
             return
         self.livros[id] = Livro(id, titulo, autor)
         print("Livro cadastrado com sucesso.")
+        sleep(2)
 
     def listar(self):
         if not self.livros:
