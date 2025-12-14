@@ -4,6 +4,7 @@ class Livro:
         self.titulo = titulo
         self.autor = autor
         self.disponivel = True
+        self.popularidade = 0
 
     def __str__(self):
         status = "Disponível" if self.disponivel else "Emprestado"
