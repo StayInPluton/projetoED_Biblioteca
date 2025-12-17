@@ -17,7 +17,6 @@ Aplicativo de linha de comando para gerenciar uma biblioteca pequena. Ele permit
 - `reservas.py`: `GerenciadorReservas` com fila por livro.
 - `heap_popularidade.py`: max-heap para ranking de popularidade.
 - `historico.py`: lista encadeada para armazenar o histórico de empréstimos.
-- `data/livros.json`: reservado para persistência futura (atualmente vazio).
 
 ## Pré-requisitos
 - Python 3.10+ (biblioteca padrão apenas, sem dependências externas).
